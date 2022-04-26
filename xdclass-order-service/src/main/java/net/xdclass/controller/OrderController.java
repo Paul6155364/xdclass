@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description 旭瑶&小滴课堂 xdclass.net
@@ -55,8 +56,10 @@ public class OrderController {
 
     @RequestMapping("/save")
     public Object save(@RequestBody Video video){
-        int rows = videoService.save(video);
-        return new HashMap<>().put("rows",rows);
+        Integer rows = videoService.save(video);
+        Map<String,Object> map = new HashMap<>();
+        map.put("rows",rows);
+        return map;
 
     }
 
