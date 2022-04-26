@@ -16,7 +16,7 @@ spring:
           predicates: #断言 配置哪个路径才转发
             - Path=/order-server/**
             - Before=2022-09-09T01:01:01.000+08:00
-            - Query=source
+            #- Query=source
           filters: #过滤器，请求在传递过程中通过过滤器修改
             - StripPrefix=1  #去掉第一层前缀
       discovery:
