@@ -2,6 +2,7 @@ package net.xdclass.controller;
 
 import net.xdclass.domain.Video;
 import net.xdclass.domain.VideoOrder;
+import net.xdclass.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -29,6 +30,9 @@ public class OrderController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Autowired
+    private VideoService videoService;
+
 
     @RequestMapping("/save")
     public Object save(int videoId){
@@ -36,7 +40,8 @@ public class OrderController {
         //Video video = restTemplate.getForObject("http://localhost:9000/api/v1/video/find_by_id?videoId="+videoId, Video.class);
 //        List<ServiceInstance> list= discoveryClient.getInstances("xdclass-video-service");
 //        ServiceInstance serviceInstance = list.get(0);
-        Video video = restTemplate.getForObject("http://xdclass-video-service/api/v1/video/find_by_id?videoId="+videoId, Video.class);
+        //Video video = restTemplate.getForObject("http://xdclass-video-service/api/v1/video/find_by_id?videoId="+videoId, Video.class);
+        Video video = videoService.findById(videoId);
         VideoOrder videoOrder = new VideoOrder();
         videoOrder.setVideoId(video.getId());
         videoOrder.setVideoTitle(video.getTitle());
