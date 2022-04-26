@@ -6,11 +6,13 @@ import net.xdclass.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -34,8 +36,8 @@ public class OrderController {
     private VideoService videoService;
 
 
-    @RequestMapping("/save")
-    public Object save(int videoId){
+    @RequestMapping("/find_by_id")
+    public Object findById(int videoId){
 
         //Video video = restTemplate.getForObject("http://localhost:9000/api/v1/video/find_by_id?videoId="+videoId, Video.class);
 //        List<ServiceInstance> list= discoveryClient.getInstances("xdclass-video-service");
@@ -48,6 +50,13 @@ public class OrderController {
         videoOrder.setCreateTime(new Date());
         videoOrder.setServerInfo(video.getServeInfo());
         return videoOrder;
+
+    }
+
+    @RequestMapping("/save")
+    public Object save(@RequestBody Video video){
+        int rows = videoService.save(video);
+        return new HashMap<>().put("rows",rows);
 
     }
 
