@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Description 旭瑶&小滴课堂 xdclass.net
@@ -60,7 +61,19 @@ public class OrderController {
         Map<String,Object> map = new HashMap<>();
         map.put("rows",rows);
         return map;
+    }
 
+    @RequestMapping("/list")
+    public Object list(){
+       try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Map<String,String> map = new HashMap<>();
+        map.put("title1","alibabacloud");
+        map.put("title2","mianshi");
+        return map;
     }
 
 
