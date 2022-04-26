@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8002
 spring:
   application:
     name: xdclass-order-service
@@ -25,3 +25,8 @@ mybatis:
 xdclass-video-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+feign:
+  sentinel:
+    enabled: true
+
