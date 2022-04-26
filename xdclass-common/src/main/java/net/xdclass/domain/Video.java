@@ -11,6 +11,8 @@ public class Video {
     private Date createTime;
     private Double point;
 
+    private String serveInfo;
+
     public Integer getId() {
         return id;
     }
@@ -65,5 +67,13 @@ public class Video {
 
     public void setPoint(Double point) {
         this.point = point;
+    }
+
+    public String getServeInfo() {
+        return serveInfo;
+    }
+
+    public void setServeInfo(String serveInfo) {
+        this.serveInfo = serveInfo;
     }
 }

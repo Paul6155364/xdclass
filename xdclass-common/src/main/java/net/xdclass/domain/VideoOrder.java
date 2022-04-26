@@ -12,7 +12,7 @@ public class VideoOrder {
     private String videoTitle;
     private String videoImg;
     private Integer userId;
-
+    private String serverInfo;
     public Integer getId() {
         return id;
     }
@@ -83,5 +83,13 @@ public class VideoOrder {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getServerInfo() {
+        return serverInfo;
+    }
+
+    public void setServerInfo(String serverInfo) {
+        this.serverInfo = serverInfo;
     }
 }

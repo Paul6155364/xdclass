@@ -34,13 +34,14 @@ public class OrderController {
     public Object save(int videoId){
 
         //Video video = restTemplate.getForObject("http://localhost:9000/api/v1/video/find_by_id?videoId="+videoId, Video.class);
-        List<ServiceInstance> list= discoveryClient.getInstances("xdclass-video-service");
-        ServiceInstance serviceInstance = list.get(0);
-        Video video = restTemplate.getForObject("http://"+serviceInstance.getHost()+":"+serviceInstance.getPort()+"/api/v1/video/find_by_id?videoId="+videoId, Video.class);
+//        List<ServiceInstance> list= discoveryClient.getInstances("xdclass-video-service");
+//        ServiceInstance serviceInstance = list.get(0);
+        Video video = restTemplate.getForObject("http://xdclass-video-service/api/v1/video/find_by_id?videoId="+videoId, Video.class);
         VideoOrder videoOrder = new VideoOrder();
         videoOrder.setVideoId(video.getId());
         videoOrder.setVideoTitle(video.getTitle());
         videoOrder.setCreateTime(new Date());
+        videoOrder.setServerInfo(video.getServeInfo());
         return videoOrder;
 
     }
