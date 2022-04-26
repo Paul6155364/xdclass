@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * 选择feign
+ * 默认集成了ribbon
+ * 写起来更加思路清晰和方便
+ * 采用注解方式进行配置，配置熔断等方式方便
+ */
 @FeignClient(name="xdclass-video-service")
 public interface VideoService {
 
